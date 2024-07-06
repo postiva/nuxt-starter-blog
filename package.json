@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "build": "nuxt build",
-        "dev": "nuxt dev",
+        "dev": "nuxt dev --dotenv .env",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare"
@@ -20,6 +20,7 @@
     },
     "dependencies": {
         "@fontsource-variable/inter": "^5.0.3",
+        "@postiva/client": "^0.0.35",
         "github-slugger": "^2.0.0"
     }
 }

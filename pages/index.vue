@@ -1,14 +1,18 @@
-<script setup>
+<script lang="ts" setup>
 const MAX_DISPLAY = 5;
 const siteMetadata = useAppConfig().metadata;
 const newsletter = useAppConfig().newsletter;
+
+import { postivaClient } from "~/libs/postivaClient";
+
+const {data: contents, pagination} = await postivaClient.contents.getContents();
+
 </script>
 <template>
     <Head>
         <Title>{{ siteMetadata.title }}</Title>
         <Meta name="description" :content="siteMetadata.description" />
     </Head>
-    <ContentList path="blog" :query="{ sort: [{ date: -1 }] }" v-slot="{ list }">
         <div class="divide-y divide-gray-200 dark:divide-gray-700">
             <div class="space-y-2 pt-6 pb-8 md:space-y-5">
                 <h1
@@ -19,15 +23,15 @@ const newsletter = useAppConfig().newsletter;
                     {{ siteMetadata.description }}
                 </p>
             </div>
-            <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-                <template v-for="post in list.slice(0, MAX_DISPLAY)" :key="post._path">
+            <ul class="divide-y divide-gray-2000 dark:divide-gray-700">
+                <template v-for="post in contents.slice(0, MAX_DISPLAY)" :key="post._path">
                     <li class="py-12">
                         <article>
                             <div class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                                 <dl>
                                     <dt class="sr-only">Published on</dt>
                                     <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                                        <time :dateTime="post.date">{{ formatDate(post.date) }}</time>
+                                        <time :dateTime="post.createdAt">{{ formatDate(post.createdAt) }}</time>
                                     </dd>
                                 </dl>
                                 <div class="space-y-5 xl:col-span-3">
@@ -43,13 +47,13 @@ const newsletter = useAppConfig().newsletter;
                                             </div>
                                         </div>
                                         <div class="prose max-w-none text-gray-500 dark:text-gray-400">
-                                            {{ post.summary }}
+                                            {{ post.description }}
                                         </div>
                                     </div>
                                     <div class="text-base font-medium leading-6">
                                         <NuxtLink
                                             class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                                            :href="`${post._path}`" :aria-label="`Read '${post.title}'`">
+                                            :href="`${post.slug}`" :aria-label="`Read '${post.title}'`">
                                             Read more &rarr;
                                         </NuxtLink>
                                     </div>
@@ -60,15 +64,5 @@ const newsletter = useAppConfig().newsletter;
                 </template>
             </ul>
         </div>
-        <div v-if="list.length > MAX_DISPLAY" class="flex justify-end text-base font-medium leading-6">
-            <NuxtLink href="/blog" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                aria-label="all posts">
-                All Posts &rarr;
-            </NuxtLink>
-        </div>
-    </ContentList>
-
-    <div v-if="newsletter.provider !== ''" class="flex items-center justify-center pt-4">
-        <NewsletterForm />
-    </div>
+       
 </template>

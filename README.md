@@ -1,4 +1,4 @@
-# Tailwind Nextjs Starter Blog (work in progress)
+# Postiva Nuxt Starter Blog
 
 Inspired by [tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
