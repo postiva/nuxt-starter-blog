@@ -42,9 +42,6 @@ const {data: contents, pagination} = await postivaClient.contents.getContents();
                                                     {{ post.title }}
                                                 </NuxtLink>
                                             </h2>
-                                            <div class="flex flex-wrap">
-                                                <Tag v-for="tag in post.tags" :key=tag :text=tag />
-                                            </div>
                                         </div>
                                         <div class="prose max-w-none text-gray-500 dark:text-gray-400">
                                             {{ post.description }}

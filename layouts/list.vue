@@ -18,7 +18,7 @@ const searchValue = ref('');
 const filteredBlogPosts = computed(() => {
     if (searchValue.value) {
         return posts.filter((post) => {
-            const searchContent = post.title + post.summary + post.tags.join(' ')
+            const searchContent = post.title + post.description
             return searchContent.toLowerCase().includes(searchValue.toLowerCase())
         })
     }
@@ -49,27 +49,24 @@ const totalPages = computed(() => Math.ceil(posts.length / constants.POSTS_PER_P
         <ul>
             <template v-if="!filteredBlogPosts.length">No posts found.</template>
             <template v-else>
-                <li v-for="post in filteredBlogPosts" :key="post._path" class="py-4">
+                <li v-for="post in filteredBlogPosts" :key="post.slug" class="py-4">
                     <article class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                         <dl>
                             <dt class="sr-only">Published on</dt>
                             <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                                <time :dateTime="post.date">{{ formatDate(post.date) }}</time>
+                                <time :dateTime="post.createdAt">{{ formatDate(post.createdAt) }}</time>
                             </dd>
                         </dl>
                         <div class="space-y-3 xl:col-span-3">
                             <div>
                                 <h3 class="text-2xl font-bold leading-8 tracking-tight">
-                                    <NuxtLink :href="`${post._path}`" class="text-gray-900 dark:text-gray-100">
+                                    <NuxtLink :href="'/blog/' + post.slug" class="text-gray-900 dark:text-gray-100">
                                         {{ post.title }}
                                     </NuxtLink>
                                 </h3>
-                                <div class="flex flex-wrap">
-                                    <Tag v-for="tag in post.tags" :key=tag :text=tag />
-                                </div>
                             </div>
                             <div class="prose max-w-none text-gray-500 dark:text-gray-400">
-                                {{ post.summary }}
+                                {{ post.description }}
                             </div>
                         </div>
                     </article>

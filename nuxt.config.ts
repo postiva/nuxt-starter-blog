@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "nuxt-icon",
     "@nuxt/image",
+    "@nuxtjs/mdc"
   ],
   colorMode: { classSuffix: "" },
   css: ["@fontsource-variable/inter/index.css"],

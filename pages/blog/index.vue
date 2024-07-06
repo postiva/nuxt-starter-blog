@@ -1,4 +1,6 @@
 <script setup>
+import { postivaClient } from '~/libs/postivaClient';
+
 const siteMetadata = useAppConfig().metadata;
 definePageMeta({
     // title: ,
@@ -9,9 +11,10 @@ useServerSeoMeta({
     title: `Blog - ${siteMetadata.author}`,
     description: siteMetadata.description,
 })
-const posts = await queryContent('blog').find();
+
+const {data: contents, pagination} = await postivaClient.contents.getContents();
 </script>
 <template>
-    <NuxtLayout name="list" title="All Posts" :posts="posts" :current-page="1">
+    <NuxtLayout name="list" title="All Posts" :posts="contents" :current-page="1">
     </NuxtLayout>
 </template>
