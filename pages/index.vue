@@ -40,7 +40,7 @@ const { data: contents, pagination } = await postivaClient.contents.getContents(
                                     <div>
                                         <h2 class="text-2xl font-bold leading-8 tracking-tight">
                                             <NuxtLink class="text-gray-900 dark:text-gray-100"
-                                                :href="`/post/${post.slug}`">
+                                                :href="`/blog/${post.slug}`">
                                                 {{ post.title }}
                                             </NuxtLink>
                                         </h2>
@@ -52,7 +52,7 @@ const { data: contents, pagination } = await postivaClient.contents.getContents(
                                 <div class="text-base font-medium leading-6">
                                     <NuxtLink
                                         class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                                        :href="`${post.slug}`" :aria-label="`Read '${post.title}'`">
+                                        :href="`/blog/${post.slug}`" :aria-label="`Read '${post.title}'`">
                                         Read more &rarr;
                                     </NuxtLink>
                                 </div>

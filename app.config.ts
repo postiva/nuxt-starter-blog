@@ -44,10 +44,11 @@ export default defineAppConfig({
     noscript: [],
   },
   metadata: {
-    title: "Nuxt.js Starter Blog",
-    author: "aliosmandev",
-    headerTitle: "PostivaNuxtBlog",
-    description: "A blog created with Nuxt.js and Tailwind.css",
+    title: "Postiva Nuxt Starter",
+    author: "Postiva",
+    headerTitle: "Postiva Nuxt Starter",
+    description:
+      "A starter blog template by Postiva using Nuxt 3 and Tailwind CSS. Ideal for quickly setting up a modern, customizable blog.",
     language: "en-us",
     theme: "dark", // system, dark or light
     siteUrl: "https://nuxt-starter.postiva.app",
@@ -58,12 +59,6 @@ export default defineAppConfig({
     email: "hello@postiva.app",
     github: "https://github.com/postiva",
     twitter: "https://twitter.com/postivaapp",
-    facebook: "https://facebook.com/postivaapp",
-    youtube: "https://youtube.com/postivaapp",
-    linkedin: "https://www.linkedin.com/company/postiva",
     locale: "en-US",
-  },
-  analytics: {
-    umamiWebsiteId: "", // e.g. 123e4567-e89b-12d3-a456-426614174000
   },
 });
