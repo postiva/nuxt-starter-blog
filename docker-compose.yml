@@ -11,7 +11,7 @@ services:
      - "traefik.http.routers.nuxtstarter.entrypoints=websecure"
      - "traefik.http.routers.nuxtstarter.tls.certResolver=letsencrypt"
      - "traefik.http.routers.nuxtstarter.rule=Host(`nuxt-starter.postiva.app`)"
-     - "traefik.http.services.nuxtstarter.loadbalancer.server.port=6000"
+     - "traefik.http.services.nuxtstarter.loadbalancer.server.port=3000"
 
 networks:
   dokploy-network:
