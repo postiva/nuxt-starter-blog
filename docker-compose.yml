@@ -1,0 +1,18 @@
+version: "3"
+services:
+  docs:
+    build: .
+    ports:
+      - "6000:30000"
+    networks:
+      - dokploy-network
+    labels:
+     - "traefik.enable=true"
+     - "traefik.http.routers.docs.entrypoints=websecure"
+     - "traefik.http.routers.docs.tls.certResolver=letsencrypt"
+     - "traefik.http.routers.docs.rule=Host(`nuxt-starter.postiva.app`)"
+     - "traefik.http.services.docs.loadbalancer.server.port=6000"
+
+networks:
+  dokploy-network:
+    external: true
