@@ -3,7 +3,7 @@ services:
   docs:
     build: .
     ports:
-      - "6000:30000"
+      - "6000:3000"
     networks:
       - dokploy-network
     labels:
