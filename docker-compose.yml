@@ -8,10 +8,10 @@ services:
       - dokploy-network
     labels:
      - "traefik.enable=true"
-     - "traefik.http.routers.docs.entrypoints=websecure"
-     - "traefik.http.routers.docs.tls.certResolver=letsencrypt"
-     - "traefik.http.routers.docs.rule=Host(`nuxt-starter.postiva.app`)"
-     - "traefik.http.services.docs.loadbalancer.server.port=6000"
+     - "traefik.http.routers.nuxtstarter.entrypoints=websecure"
+     - "traefik.http.routers.nuxtstarter.tls.certResolver=letsencrypt"
+     - "traefik.http.routers.nuxtstarter.rule=Host(`nuxt-starter.postiva.app`)"
+     - "traefik.http.services.nuxtstarter.loadbalancer.server.port=6000"
 
 networks:
   dokploy-network:
